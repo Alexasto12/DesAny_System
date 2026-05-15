@@ -1,0 +1,66 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: desany-postgres
+    environment:
+      POSTGRES_USER: desany
+      POSTGRES_PASSWORD: desany
+      POSTGRES_DB: desany
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U desany"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - desany-network
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: desany-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - desany-network
+    restart: unless-stopped
+
+  # Placeholder services for other apps (will be filled in by other prompts)
+  llm-server:
+    build:
+      context: ../apps/llm-server
+      dockerfile: Dockerfile
+    container_name: desany-llm
+    ports:
+      - "8000:8000"
+    environment:
+      MODEL_NAME: "Qwen/Qwen3-30B-A3B"
+    networks:
+      - desany-network
+    restart: unless-stopped
+    # Uncomment when ready:
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - capabilities: [gpu]
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  desany-network:
+    driver: bridge
