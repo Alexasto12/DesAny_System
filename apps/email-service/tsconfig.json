@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "@desany/types": ["./src/types/desany-types.d.ts"],
+      "@desany/db": ["./src/types/desany-db.d.ts"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/types/*.d.ts"],
+  "exclude": ["node_modules", "dist", "src/**/*.test.ts", "src/__tests__/**"]
+}

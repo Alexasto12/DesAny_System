@@ -76,6 +76,28 @@ services:
     networks: [desany-network]
     restart: unless-stopped
 
+  email-service:
+    build:
+      context: ..
+      dockerfile: apps/email-service/Dockerfile
+    container_name: desany-email
+    env_file: ../.env
+    ports:
+      - "4000:4000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - desany-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:4000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
   deploy-service:
     build:
       context: ..
