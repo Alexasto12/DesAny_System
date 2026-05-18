@@ -57,6 +57,20 @@ services:
     #       devices:
     #         - capabilities: [gpu]
 
+  deploy-service:
+    build:
+      context: ..
+      dockerfile: apps/deploy-service/Dockerfile
+    container_name: desany-deploy
+    env_file: ../.env
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+    networks: [desany-network]
+    restart: unless-stopped
+    volumes:
+      - /tmp/desany:/tmp/desany
+
 volumes:
   postgres_data:
   redis_data:
