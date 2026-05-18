@@ -1,0 +1,12 @@
+{
+  "name": "@desany/llm-server",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "warmup": "tsx warm-up.ts"
+  },
+  "dependencies": {
+    "openai": "^4.60.0",
+    "tsx": "^4.19.0"
+  }
+}
