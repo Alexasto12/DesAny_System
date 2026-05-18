@@ -16,6 +16,7 @@ export interface SchedulerHandle {
 
 export interface SchedulerTick {
   stuckJobsResurrected: number;
+  scrapedLeadsKicked: number;
   enrichedLeadsKicked: number;
   contentReadySitesKicked: number;
   deployedSitesKicked: number;
@@ -98,6 +99,7 @@ async function ensurePipelineRow(leadId: number, stage: JobStage): Promise<void>
 async function runTick(queues: Queues): Promise<SchedulerTick> {
   const tick: SchedulerTick = {
     stuckJobsResurrected: 0,
+    scrapedLeadsKicked: 0,
     enrichedLeadsKicked: 0,
     contentReadySitesKicked: 0,
     deployedSitesKicked: 0,
@@ -112,9 +114,9 @@ async function runTick(queues: Queues): Promise<SchedulerTick> {
     );
     for (const job of stuck) {
       try {
-        if (job.stage === 'enrich' || job.stage === 'generate-content') {
+        if (job.stage === 'generate-content') {
           if (job.leadId != null) {
-            await enqueueStage(queues, job.stage as JobStage, { leadId: job.leadId });
+            await enqueueStage(queues, job.stage, { leadId: job.leadId });
           }
         } else if (job.stage === 'build-site' || job.stage === 'send-outreach') {
           if (job.leadId != null) {
@@ -130,6 +132,18 @@ async function runTick(queues: Queues): Promise<SchedulerTick> {
       } catch (err) {
         logger.warn({ err: (err as Error).message, jobId: job.id, stage: job.stage }, 'failed to resurrect stuck job');
       }
+    }
+  }
+
+  // 1b) Scraped leads with no generate-content pipeline row.
+  const scrapedLeads = await leadsMissingPipelineRow('scraped', 'generate-content');
+  for (const lead of scrapedLeads) {
+    try {
+      await ensurePipelineRow(lead.id, 'generate-content');
+      await enqueueStage(queues, 'generate-content', { leadId: lead.id });
+      tick.scrapedLeadsKicked++;
+    } catch (err) {
+      logger.warn({ err: (err as Error).message, leadId: lead.id }, 'failed to kick scraped lead');
     }
   }
 
@@ -191,6 +205,7 @@ export function startScheduler(queues: Queues): SchedulerHandle {
       const result = await runTick(queues);
       if (
         result.stuckJobsResurrected ||
+        result.scrapedLeadsKicked ||
         result.enrichedLeadsKicked ||
         result.contentReadySitesKicked ||
         result.deployedSitesKicked
@@ -237,6 +252,7 @@ export function startScheduler(queues: Queues): SchedulerHandle {
       const result = await tick();
       return result ?? {
         stuckJobsResurrected: 0,
+        scrapedLeadsKicked: 0,
         enrichedLeadsKicked: 0,
         contentReadySitesKicked: 0,
         deployedSitesKicked: 0,

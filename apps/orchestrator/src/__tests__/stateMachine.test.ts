@@ -10,53 +10,31 @@ import {
 } from '../stateMachine.js';
 
 describe('stateMachine.nextStage', () => {
-  const leadWithReviews: LeadLike = {
+  const lead: LeadLike = {
     email: 'a@b.com',
     rawData: { reviews: [{ text: 'great', rating: 5, author: 'Joe' }] },
   };
-  const leadWithoutReviews: LeadLike = {
-    email: 'a@b.com',
-    rawData: { reviews: [] },
-  };
-  const leadWithNoRawData: LeadLike = { email: 'a@b.com', rawData: null };
 
-  it('scrape → enrich when lead has reviews', () => {
-    expect(nextStage('scrape', leadWithReviews)).toBe('enrich');
-  });
-
-  it('scrape → generate-content when lead has no reviews', () => {
-    expect(nextStage('scrape', leadWithoutReviews)).toBe('generate-content');
-  });
-
-  it('scrape → generate-content when rawData is null', () => {
-    expect(nextStage('scrape', leadWithNoRawData)).toBe('generate-content');
-  });
-
-  it('scrape → generate-content when rawData.reviews is not an array', () => {
-    expect(nextStage('scrape', { rawData: { reviews: 'oops' } })).toBe('generate-content');
-  });
-
-  it('enrich → generate-content', () => {
-    expect(nextStage('enrich', leadWithReviews)).toBe('generate-content');
+  it('scrape → generate-content', () => {
+    expect(nextStage('scrape', lead)).toBe('generate-content');
   });
 
   it('generate-content → build-site', () => {
-    expect(nextStage('generate-content', leadWithReviews)).toBe('build-site');
+    expect(nextStage('generate-content', lead)).toBe('build-site');
   });
 
   it('build-site → send-outreach', () => {
-    expect(nextStage('build-site', leadWithReviews)).toBe('send-outreach');
+    expect(nextStage('build-site', lead)).toBe('send-outreach');
   });
 
   it('send-outreach → null (terminal)', () => {
-    expect(nextStage('send-outreach', leadWithReviews)).toBeNull();
+    expect(nextStage('send-outreach', lead)).toBeNull();
   });
 });
 
 describe('stateMachine.nextStageForRetry', () => {
   it('retry stays on the same stage', () => {
     expect(nextStageForRetry('scrape')).toBe('scrape');
-    expect(nextStageForRetry('enrich')).toBe('enrich');
     expect(nextStageForRetry('generate-content')).toBe('generate-content');
     expect(nextStageForRetry('build-site')).toBe('build-site');
     expect(nextStageForRetry('send-outreach')).toBe('send-outreach');
@@ -64,11 +42,9 @@ describe('stateMachine.nextStageForRetry', () => {
 });
 
 describe('stateMachine.expectedNextStageForLeadStatus', () => {
-  it('raw/scraped → enrich', () => {
-    expect(expectedNextStageForLeadStatus('raw')).toBe('enrich');
-    expect(expectedNextStageForLeadStatus('scraped')).toBe('enrich');
-  });
-  it('enriched → generate-content', () => {
+  it('raw/scraped/enriched → generate-content', () => {
+    expect(expectedNextStageForLeadStatus('raw')).toBe('generate-content');
+    expect(expectedNextStageForLeadStatus('scraped')).toBe('generate-content');
     expect(expectedNextStageForLeadStatus('enriched')).toBe('generate-content');
   });
   it('failed → null', () => {
@@ -97,10 +73,9 @@ describe('stateMachine.expectedNextStageForSiteStatus', () => {
 });
 
 describe('STAGES and QUEUE_NAMES', () => {
-  it('exposes all five pipeline stages in pipeline order', () => {
+  it('exposes all four pipeline stages in pipeline order', () => {
     expect(STAGES).toEqual([
       'scrape',
-      'enrich',
       'generate-content',
       'build-site',
       'send-outreach',
@@ -110,7 +85,6 @@ describe('STAGES and QUEUE_NAMES', () => {
   it('maps every stage to its frozen queue name', () => {
     expect(QUEUE_NAMES).toEqual({
       scrape: 'scrape',
-      enrich: 'enrich',
       'generate-content': 'generate-content',
       'build-site': 'build-site',
       'send-outreach': 'send-outreach',
