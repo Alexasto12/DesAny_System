@@ -163,6 +163,52 @@ importers:
         specifier: ^4.19.0
         version: 4.22.1
 
+  apps/orchestrator:
+    dependencies:
+      '@desany/db':
+        specifier: workspace:*
+        version: link:../../packages/db
+      '@desany/types':
+        specifier: workspace:*
+        version: link:../../packages/types
+      bullmq:
+        specifier: ^5.13.0
+        version: 5.76.10
+      commander:
+        specifier: ^12.1.0
+        version: 12.1.0
+      drizzle-orm:
+        specifier: ^0.36.0
+        version: 0.36.4(@types/pg@8.20.0)(@types/react@18.3.28)(pg@8.20.0)(react@19.2.6)
+      fastify:
+        specifier: ^5.0.0
+        version: 5.8.5
+      ioredis:
+        specifier: ^5.4.0
+        version: 5.10.1
+      pino:
+        specifier: ^9.4.0
+        version: 9.14.0
+      pino-pretty:
+        specifier: ^11.2.0
+        version: 11.3.0
+      zod:
+        specifier: ^3.23.0
+        version: 3.25.76
+    devDependencies:
+      '@types/node':
+        specifier: ^22.0.0
+        version: 22.19.19
+      tsx:
+        specifier: ^4.19.0
+        version: 4.22.1
+      typescript:
+        specifier: ^5.6.0
+        version: 5.9.3
+      vitest:
+        specifier: ^2.1.0
+        version: 2.1.9(@types/node@22.19.19)(lightningcss@1.32.0)
+
   apps/scraper:
     dependencies:
       '@desany/db':
@@ -1615,6 +1661,10 @@ packages:
   combined-stream@1.0.8:
     resolution: {integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==}
     engines: {node: '>= 0.8'}
+
+  commander@12.1.0:
+    resolution: {integrity: sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA==}
+    engines: {node: '>=18'}
 
   concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
@@ -3887,6 +3937,8 @@ snapshots:
   combined-stream@1.0.8:
     dependencies:
       delayed-stream: 1.0.0
+
+  commander@12.1.0: {}
 
   concat-map@0.0.1: {}
 
