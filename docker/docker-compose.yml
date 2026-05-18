@@ -112,6 +112,19 @@ services:
     volumes:
       - /tmp/desany:/tmp/desany
 
+  content-gen:
+    build:
+      context: ..
+      dockerfile: apps/content-gen/Dockerfile
+    container_name: desany-content-gen
+    env_file: ../.env
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+      llm-server: { condition: service_started }
+    networks: [desany-network]
+    restart: unless-stopped
+
 volumes:
   postgres_data:
   redis_data:

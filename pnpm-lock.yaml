@@ -21,6 +21,49 @@ importers:
         specifier: ^5.6.0
         version: 5.9.3
 
+  apps/content-gen:
+    dependencies:
+      '@desany/db':
+        specifier: workspace:*
+        version: link:../../packages/db
+      '@desany/prompts':
+        specifier: workspace:*
+        version: link:../../packages/prompts
+      '@desany/types':
+        specifier: workspace:*
+        version: link:../../packages/types
+      bullmq:
+        specifier: ^5.13.0
+        version: 5.76.8
+      drizzle-orm:
+        specifier: ^0.32.0
+        version: 0.32.2(@types/pg@8.20.0)(pg@8.20.0)
+      ioredis:
+        specifier: ^5.4.0
+        version: 5.10.1
+      openai:
+        specifier: ^4.60.0
+        version: 4.104.0(zod@3.25.76)
+      pino:
+        specifier: ^9.4.0
+        version: 9.14.0
+      zod:
+        specifier: ^3.23.0
+        version: 3.25.76
+    devDependencies:
+      '@types/node':
+        specifier: ^22.0.0
+        version: 22.19.19
+      tsx:
+        specifier: ^4.19.0
+        version: 4.22.0
+      typescript:
+        specifier: ^5.6.0
+        version: 5.9.3
+      vitest:
+        specifier: ^2.1.0
+        version: 2.1.9(@types/node@22.19.19)
+
   apps/deploy-service:
     dependencies:
       '@desany/db':
@@ -186,6 +229,12 @@ importers:
       drizzle-kit:
         specifier: ^0.25.0
         version: 0.25.0
+      typescript:
+        specifier: ^5.6.0
+        version: 5.9.3
+
+  packages/prompts:
+    devDependencies:
       typescript:
         specifier: ^5.6.0
         version: 5.9.3
