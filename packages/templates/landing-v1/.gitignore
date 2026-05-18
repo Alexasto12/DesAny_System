@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# next.js
+.next/
+out/
+
+# build artifacts
+dist/
+build/
+
+# generated content (per-tenant override)
+content.json
+
+# misc
+.DS_Store
+*.pem
+.env*.local
+next-env.d.ts
+*.tsbuildinfo

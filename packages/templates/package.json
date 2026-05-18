@@ -1,0 +1,19 @@
+{
+  "name": "@desany/templates",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "echo \"@desany/templates is a meta package; per-template builds run from landing-v1/\" && exit 0",
+    "generate-site": "tsx scripts/generate-site.ts",
+    "preview": "pnpm --filter @desany/template-landing-v1 dev"
+  },
+  "dependencies": {
+    "@desany/types": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}

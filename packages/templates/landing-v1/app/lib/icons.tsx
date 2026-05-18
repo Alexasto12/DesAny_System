@@ -1,0 +1,83 @@
+import {
+  Scissors,
+  Palette,
+  Brush,
+  PenTool,
+  Sparkles,
+  Star,
+  Heart,
+  Crown,
+  Shirt,
+  ShoppingBag,
+  Gem,
+  Flame,
+  Hammer,
+  Wrench,
+  Hand,
+  Smile,
+  Coffee,
+  Utensils,
+  Camera,
+  Music,
+  Sun,
+  Moon,
+  Leaf,
+  Flower2,
+  Wand2,
+  Zap,
+  Stethoscope,
+  Dumbbell,
+  Car,
+  Home,
+  Cake,
+  Wine,
+  Anchor,
+  type LucideIcon,
+} from 'lucide-react';
+
+type IconRule = { match: RegExp; icon: LucideIcon };
+
+const RULES: IconRule[] = [
+  { match: /tatuaje|tattoo|ink|piercing/i, icon: PenTool },
+  { match: /barba|beard|afeitad|shave/i, icon: Scissors },
+  { match: /scissor|cut|corte|haircut|peinad|pelo|cabello|hair/i, icon: Scissors },
+  { match: /color|tinte|mecha|balayage|highlight|dye/i, icon: Palette },
+  { match: /maquillaje|makeup|brush/i, icon: Brush },
+  { match: /joyer|jewel|diamond|gem|anill|ring/i, icon: Gem },
+  { match: /bouquet|boda|wedding|novia|crown|corona/i, icon: Crown },
+  { match: /spa|wellness|massage|masaje|relajacion/i, icon: Sparkles },
+  { match: /ropa|moda|fashion|prenda|shirt|boutique|atuendo/i, icon: Shirt },
+  { match: /compra|shopping|bag|tienda/i, icon: ShoppingBag },
+  { match: /flame|fuego|forge|fire/i, icon: Flame },
+  { match: /repara|fix|repair|hammer|construc/i, icon: Hammer },
+  { match: /plumber|fontaner|wrench|tool/i, icon: Wrench },
+  { match: /quiropract|fisio|terapia|hand|therapy/i, icon: Hand },
+  { match: /sonris|smile|dentis|dental|orthodont/i, icon: Smile },
+  { match: /cafe|coffee|barista/i, icon: Coffee },
+  { match: /restaurant|comida|cocina|chef|menu/i, icon: Utensils },
+  { match: /pastel|cake|bakery|panader|reposter/i, icon: Cake },
+  { match: /vino|wine|bar|sommelier/i, icon: Wine },
+  { match: /foto|photo|camera/i, icon: Camera },
+  { match: /music|musica|dj|sound/i, icon: Music },
+  { match: /sun|solar|verano/i, icon: Sun },
+  { match: /noche|night|moon/i, icon: Moon },
+  { match: /leaf|hoja|organic|natural|botanic/i, icon: Leaf },
+  { match: /flor|flower|jardin/i, icon: Flower2 },
+  { match: /magic|wand|illusion|magia/i, icon: Wand2 },
+  { match: /energy|electric|fast|express|rapid|zap/i, icon: Zap },
+  { match: /salud|health|medic|clinic|stetho/i, icon: Stethoscope },
+  { match: /gym|fitness|entrena|pesa/i, icon: Dumbbell },
+  { match: /auto|car|mecanic|taller/i, icon: Car },
+  { match: /casa|home|hogar|inmobil/i, icon: Home },
+  { match: /barco|boat|nautic|anchor/i, icon: Anchor },
+  { match: /star|estrella|premium|featured/i, icon: Star },
+  { match: /heart|amor|care|love/i, icon: Heart },
+];
+
+export function pickIcon(serviceName: string, iconHint?: string): LucideIcon {
+  const haystack = `${iconHint ?? ''} ${serviceName}`.trim();
+  for (const rule of RULES) {
+    if (rule.match.test(haystack)) return rule.icon;
+  }
+  return Sparkles;
+}
