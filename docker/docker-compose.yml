@@ -76,6 +76,55 @@ services:
     networks: [desany-network]
     restart: unless-stopped
 
+  email-service:
+    build:
+      context: ..
+      dockerfile: apps/email-service/Dockerfile
+    container_name: desany-email
+    env_file: ../.env
+    ports:
+      - "4000:4000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - desany-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:4000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  deploy-service:
+    build:
+      context: ..
+      dockerfile: apps/deploy-service/Dockerfile
+    container_name: desany-deploy
+    env_file: ../.env
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+    networks: [desany-network]
+    restart: unless-stopped
+    volumes:
+      - /tmp/desany:/tmp/desany
+
+  content-gen:
+    build:
+      context: ..
+      dockerfile: apps/content-gen/Dockerfile
+    container_name: desany-content-gen
+    env_file: ../.env
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+      llm-server: { condition: service_started }
+    networks: [desany-network]
+    restart: unless-stopped
+
 volumes:
   postgres_data:
   redis_data:
