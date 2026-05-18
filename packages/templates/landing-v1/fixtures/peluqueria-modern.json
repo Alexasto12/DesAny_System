@@ -1,0 +1,73 @@
+{
+  "hero": {
+    "headline": "Salón Vértice — Cortes pensados, color con intención",
+    "subheadline": "Estudio de cabello en la Condesa. Trabajamos con consulta uno a uno, técnicas de color de bajo daño y peinados que aguantan la semana, no solo la sesión de fotos."
+  },
+  "services": [
+    {
+      "name": "Corte y diseño",
+      "description": "Análisis de rostro, densidad y caída antes de tocar las tijeras. Cada corte se traza para crecer bien tres meses, no solo verse bien al salir.",
+      "icon": "scissors"
+    },
+    {
+      "name": "Color personalizado",
+      "description": "Formulamos cada tono al momento. Trabajamos con tinte sin amoníaco, oxidaciones bajas y mucho tiempo bajo el espejo para ajustar matiz.",
+      "icon": "palette"
+    },
+    {
+      "name": "Mechas balayage",
+      "description": "Iluminaciones pintadas a mano, hebra por hebra. Pensadas para clientas que solo quieren retocar cada cuatro o cinco meses.",
+      "icon": "brush"
+    },
+    {
+      "name": "Tratamiento de hidratación",
+      "description": "Mascarillas con queratina hidrolizada y aceite de argán prensado en frío. Hacemos diagnóstico previo de porosidad para no sobrecargar la fibra.",
+      "icon": "sparkles"
+    },
+    {
+      "name": "Peinado para evento",
+      "description": "Recogidos, semirrecogidos y ondas suaves. Probamos look completo en cita preliminar para que el día del evento no haya sorpresas.",
+      "icon": "crown"
+    },
+    {
+      "name": "Asesoría capilar",
+      "description": "Una hora sin tijeras: revisamos rutina, productos y cómo estás secando en casa. Te llevas un plan escrito, no recomendaciones vagas.",
+      "icon": "hand"
+    }
+  ],
+  "testimonials": [
+    {
+      "text": "Llevaba seis años con el mismo corte porque ninguna peluquería entendía mi cabello rizado. Vinieron, me explicaron qué estaban haciendo y por qué, y ahora salgo de la regadera sin tener que arreglar nada.",
+      "author": "Mariana Robledo",
+      "rating": 5
+    },
+    {
+      "text": "Mejor balayage que me han hecho en CDMX. El precio no es bajo, pero llevo cuatro meses sin retocar y el degradado sigue impecable. Vale cada peso.",
+      "author": "Renata Lozano",
+      "rating": 5
+    },
+    {
+      "text": "Pedí cita por un evento y terminé quedándome como cliente fijo. Lo que más me gustó: nadie intentó venderme servicios que no necesitaba.",
+      "author": "Carolina Ibarra",
+      "rating": 5
+    }
+  ],
+  "about": "Salón Vértice abrió en 2019 en una casa de los años cuarenta de la Condesa. Atendemos por cita previa, máximo cuatro clientas en simultáneo, porque creemos que el cabello no se hace en serie.\n\nNuestro equipo se formó en Madrid, São Paulo y la Ciudad de México. Cada año dedicamos dos semanas a formación continua: técnicas de corte japonés, balayage francés y química capilar aplicada.\n\nNo hacemos descuentos por volumen ni promociones relámpago. Lo que sí hacemos: dar el tiempo necesario, escuchar antes de proponer y decirte cuando algo que pides no le va a sentar bien a tu cabello.",
+  "cta": {
+    "text": "Reserva tu cita",
+    "action": "phone",
+    "target": "+525511223344"
+  },
+  "contact": {
+    "phone": "+52 55 1122 3344",
+    "email": "hola@salonvertice.mx",
+    "address": "Av. Mazatlán 156, Condesa, 06140 CDMX",
+    "mapsEmbedUrl": "https://maps.google.com/maps?q=Av.+Mazatl%C3%A1n+156+Condesa+CDMX&t=&z=15&ie=UTF8&iwloc=&output=embed"
+  },
+  "colors": {
+    "primary": "#2c2a28",
+    "secondary": "#faf6f1",
+    "accent": "#c87d72"
+  },
+  "styleVariant": "modern"
+}

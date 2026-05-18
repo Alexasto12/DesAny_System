@@ -1,0 +1,73 @@
+{
+  "hero": {
+    "headline": "Aguafuerte — Estudio de tatuaje en Roma Norte",
+    "subheadline": "Cinco tatuadoras residentes, una invitada cada mes y cero piezas calcadas de Pinterest. Trabajamos por proyecto, no por hora de catálogo."
+  },
+  "services": [
+    {
+      "name": "Tatuaje por proyecto",
+      "description": "Reservamos un día entero para tu pieza. Diseño previo en cita aparte, sin presión de aprobarlo al vuelo. Si no funciona, lo rehacemos.",
+      "icon": "tattoo"
+    },
+    {
+      "name": "Cover-up",
+      "description": "Revisamos lo que tienes y diseñamos algo que lo absorba con sentido. Nada de tapar con manchas negras enormes: si no se puede hacer bien, te lo decimos.",
+      "icon": "flame"
+    },
+    {
+      "name": "Trabajo a mano alzada",
+      "description": "Estilo blackwork, ornamental y dotwork directamente sobre piel. Para clientes que ya tienen confianza con su tatuadora.",
+      "icon": "pen"
+    },
+    {
+      "name": "Piercing",
+      "description": "Joyería de implant-grade titanium ASTM-F136. Anillos, barras y curvos. Cita y revisión a las dos semanas sin coste.",
+      "icon": "piercing"
+    },
+    {
+      "name": "Retoque",
+      "description": "Hasta seis meses después de la sesión, el retoque está incluido. Después de ese plazo, también lo hacemos: solo cobramos materiales.",
+      "icon": "zap"
+    },
+    {
+      "name": "Sesión de residente invitada",
+      "description": "Cada mes traemos a una tatuadora de fuera de México. Las plazas se publican el primero de mes y se llenan en una hora.",
+      "icon": "star"
+    }
+  ],
+  "testimonials": [
+    {
+      "text": "Fui con un boceto pésimo en el celular y salí con una pieza que no cambiaría nada. Me corrigieron sin hacerme sentir tonto y eso ya dice mucho.",
+      "author": "Diego Esquivel",
+      "rating": 5
+    },
+    {
+      "text": "Llevaba cinco años queriendo taparme un tatuaje viejo. Tres estudios me habían dicho que era imposible. Aguafuerte lo hizo en dos sesiones.",
+      "author": "Camila Bracho",
+      "rating": 5
+    },
+    {
+      "text": "El estudio está impecable, todo se abre delante de ti y la conversación durante la sesión vale tanto como la pieza. Volveré sin duda.",
+      "author": "Sebastián Aldama",
+      "rating": 5
+    }
+  ],
+  "about": "Aguafuerte abrió en 2021 en un local sobre Avenida Álvaro Obregón. Lo fundaron Inés Carrasco y Lucía Bertón después de seis años tatuando en estudios de Buenos Aires y Berlín.\n\nNuestra política es simple: trabajos personalizados, una sola sesión por día por tatuadora, esterilización clase B y cada cliente recibe el lote del pigmento usado. Nada de esa información va escondida.\n\nNo cobramos depósito por consulta inicial. Sí pedimos un depósito al fijar fecha, porque reservar un día entero significa rechazar otros. Si avisas con setenta y dos horas, se transfiere a otra cita sin perderlo.",
+  "cta": {
+    "text": "Agenda consulta",
+    "action": "email",
+    "target": "estudio@aguafuerte.mx"
+  },
+  "contact": {
+    "phone": "+52 55 8765 4321",
+    "email": "estudio@aguafuerte.mx",
+    "address": "Av. Álvaro Obregón 248, Roma Norte, 06700 CDMX",
+    "mapsEmbedUrl": "https://maps.google.com/maps?q=Av.+%C3%81lvaro+Obreg%C3%B3n+248+Roma+Norte+CDMX&t=&z=16&ie=UTF8&iwloc=&output=embed"
+  },
+  "colors": {
+    "primary": "#0d0d0d",
+    "secondary": "#ededeb",
+    "accent": "#c1372c"
+  },
+  "styleVariant": "bold"
+}

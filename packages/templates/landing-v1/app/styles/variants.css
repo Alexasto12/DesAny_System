@@ -1,0 +1,438 @@
+/*
+ * Variant tokens — applied to any element with [data-variant="..."]
+ *
+ * Each variant block defines CSS custom properties on its scope element
+ * (typically <html data-variant="X">). All component classes (.v-hero,
+ * .v-card, .v-cta-primary, etc.) consume the tokens via var() and are
+ * variant-agnostic, so CSS-variable inheritance naturally lets the
+ * preview page nest multiple variants side-by-side without conflict.
+ */
+
+/* ------------------------------------------------------------------ */
+/* MODERN — Inter, soft shadows, rounded-2xl, subtle gradients         */
+/* ------------------------------------------------------------------ */
+[data-variant='modern'] {
+  --v-font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --v-font-heading: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --v-section-py: clamp(4rem, 10vw, 7rem);
+  --v-container-max: 72rem;
+
+  --v-heading-weight: 600;
+  --v-heading-letter-spacing: -0.025em;
+  --v-heading-line-height: 1.05;
+  --v-heading-transform: none;
+  --v-body-letter-spacing: 0;
+
+  --v-radius-pill: 9999px;
+  --v-radius-card: 1.5rem;
+  --v-radius-input: 0.75rem;
+
+  --v-shadow-sm: 0 4px 12px rgba(15, 15, 15, 0.06);
+  --v-shadow-md: 0 12px 32px rgba(15, 15, 15, 0.08);
+  --v-shadow-lg: 0 24px 64px rgba(15, 15, 15, 0.1);
+
+  --v-card-bg: #ffffff;
+  --v-card-border: 1px solid color-mix(in oklab, var(--color-primary) 6%, transparent);
+  --v-card-radius: var(--v-radius-card);
+  --v-card-shadow: var(--v-shadow-sm);
+  --v-card-shadow-hover: var(--v-shadow-md);
+  --v-card-clip: none;
+  --v-card-transform-hover: translateY(-2px);
+
+  --v-cta-primary-bg: var(--color-primary);
+  --v-cta-primary-bg-hover: color-mix(in oklab, var(--color-primary) 86%, var(--color-accent));
+  --v-cta-primary-color: var(--color-secondary);
+  --v-cta-primary-radius: var(--v-radius-pill);
+  --v-cta-primary-padding: 0.95rem 2rem;
+  --v-cta-primary-font-weight: 500;
+  --v-cta-primary-font-size: 0.95rem;
+  --v-cta-primary-text-transform: none;
+  --v-cta-primary-letter-spacing: 0;
+  --v-cta-primary-shadow: var(--v-shadow-md);
+  --v-cta-primary-shadow-hover: var(--v-shadow-lg);
+  --v-cta-primary-clip: none;
+  --v-cta-primary-transform-hover: translateY(-1px);
+
+  --v-cta-secondary-bg: transparent;
+  --v-cta-secondary-bg-hover: color-mix(in oklab, var(--color-primary) 5%, transparent);
+  --v-cta-secondary-color: var(--color-primary);
+  --v-cta-secondary-radius: var(--v-radius-pill);
+  --v-cta-secondary-padding: 0.95rem 2rem;
+  --v-cta-secondary-font-weight: 500;
+  --v-cta-secondary-font-size: 0.95rem;
+  --v-cta-secondary-text-transform: none;
+  --v-cta-secondary-letter-spacing: 0;
+  --v-cta-secondary-border: 1px solid color-mix(in oklab, var(--color-primary) 25%, transparent);
+  --v-cta-secondary-border-hover: 1px solid color-mix(in oklab, var(--color-primary) 45%, transparent);
+
+  --v-eyebrow-font: inherit;
+  --v-eyebrow-style: normal;
+  --v-eyebrow-size: 0.75rem;
+  --v-eyebrow-color: var(--color-accent);
+  --v-eyebrow-weight: 600;
+  --v-eyebrow-letter-spacing: 0.18em;
+  --v-eyebrow-text-transform: uppercase;
+  --v-eyebrow-bg: transparent;
+  --v-eyebrow-padding: 0;
+
+  --v-divider-bg: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, var(--color-primary) 12%, transparent),
+    transparent
+  );
+  --v-divider-height: 1px;
+  --v-divider-width: 100%;
+  --v-divider-margin: 0;
+
+  --v-hero-bg: radial-gradient(
+      ellipse 80% 50% at 50% -10%,
+      color-mix(in oklab, var(--color-accent) 18%, transparent),
+      transparent 60%
+    ),
+    linear-gradient(180deg, color-mix(in oklab, var(--color-secondary) 92%, white), var(--color-secondary));
+  --v-hero-shape-1-display: none;
+  --v-hero-shape-2-display: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* ELEGANT — Playfair headings + Inter body, muted, generous tracking  */
+/* ------------------------------------------------------------------ */
+[data-variant='elegant'] {
+  --v-font-body: var(--font-inter), ui-serif, Georgia, serif;
+  --v-font-heading: var(--font-playfair), ui-serif, Georgia, serif;
+
+  --v-section-py: clamp(5rem, 12vw, 9rem);
+  --v-container-max: 64rem;
+
+  --v-heading-weight: 500;
+  --v-heading-letter-spacing: 0.015em;
+  --v-heading-line-height: 1.15;
+  --v-heading-transform: none;
+  --v-body-letter-spacing: 0.005em;
+
+  --v-radius-pill: 2px;
+  --v-radius-card: 3px;
+  --v-radius-input: 2px;
+
+  --v-shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.04);
+  --v-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.06);
+  --v-shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.08);
+
+  --v-card-bg: color-mix(in oklab, var(--color-secondary) 55%, white);
+  --v-card-border: 1px solid color-mix(in oklab, var(--color-primary) 12%, transparent);
+  --v-card-radius: var(--v-radius-card);
+  --v-card-shadow: var(--v-shadow-sm);
+  --v-card-shadow-hover: var(--v-shadow-md);
+  --v-card-clip: none;
+  --v-card-transform-hover: translateY(-1px);
+
+  --v-cta-primary-bg: var(--color-primary);
+  --v-cta-primary-bg-hover: color-mix(in oklab, var(--color-primary) 82%, var(--color-accent));
+  --v-cta-primary-color: var(--color-secondary);
+  --v-cta-primary-radius: var(--v-radius-pill);
+  --v-cta-primary-padding: 1.05rem 2.5rem;
+  --v-cta-primary-font-weight: 500;
+  --v-cta-primary-font-size: 0.8125rem;
+  --v-cta-primary-text-transform: uppercase;
+  --v-cta-primary-letter-spacing: 0.18em;
+  --v-cta-primary-shadow: none;
+  --v-cta-primary-shadow-hover: none;
+  --v-cta-primary-clip: none;
+  --v-cta-primary-transform-hover: none;
+
+  --v-cta-secondary-bg: transparent;
+  --v-cta-secondary-bg-hover: transparent;
+  --v-cta-secondary-color: var(--color-primary);
+  --v-cta-secondary-radius: 0;
+  --v-cta-secondary-padding: 1.05rem 0.25rem;
+  --v-cta-secondary-font-weight: 500;
+  --v-cta-secondary-font-size: 0.8125rem;
+  --v-cta-secondary-text-transform: uppercase;
+  --v-cta-secondary-letter-spacing: 0.18em;
+  --v-cta-secondary-border: none;
+  --v-cta-secondary-border-hover: none;
+
+  --v-eyebrow-font: var(--v-font-heading);
+  --v-eyebrow-style: italic;
+  --v-eyebrow-size: 1rem;
+  --v-eyebrow-color: var(--color-accent);
+  --v-eyebrow-weight: 500;
+  --v-eyebrow-letter-spacing: 0.04em;
+  --v-eyebrow-text-transform: none;
+  --v-eyebrow-bg: transparent;
+  --v-eyebrow-padding: 0;
+
+  --v-divider-bg: var(--color-accent);
+  --v-divider-height: 1px;
+  --v-divider-width: 3rem;
+  --v-divider-margin: 1rem 0;
+
+  --v-hero-bg: linear-gradient(
+    180deg,
+    var(--color-secondary) 0%,
+    color-mix(in oklab, var(--color-secondary) 88%, var(--color-accent)) 100%
+  );
+  --v-hero-shape-1-display: none;
+  --v-hero-shape-2-display: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* BOLD — Space Grotesk, high contrast, geometric clip-paths           */
+/* ------------------------------------------------------------------ */
+[data-variant='bold'] {
+  --v-font-body: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --v-font-heading: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+
+  --v-section-py: clamp(3.5rem, 8vw, 5.5rem);
+  --v-container-max: 78rem;
+
+  --v-heading-weight: 800;
+  --v-heading-letter-spacing: -0.035em;
+  --v-heading-line-height: 0.95;
+  --v-heading-transform: uppercase;
+  --v-body-letter-spacing: 0;
+
+  --v-radius-pill: 0;
+  --v-radius-card: 0;
+  --v-radius-input: 0;
+
+  --v-shadow-sm: 6px 6px 0 var(--color-primary);
+  --v-shadow-md: 10px 10px 0 var(--color-primary);
+  --v-shadow-lg: 14px 14px 0 var(--color-primary);
+
+  --v-card-bg: var(--color-secondary);
+  --v-card-border: 2px solid var(--color-primary);
+  --v-card-radius: 0;
+  --v-card-shadow: var(--v-shadow-sm);
+  --v-card-shadow-hover: var(--v-shadow-md);
+  --v-card-clip: polygon(0 0, 100% 0, 100% calc(100% - 1.25rem), calc(100% - 1.25rem) 100%, 0 100%);
+  --v-card-transform-hover: translate(-3px, -3px);
+
+  --v-cta-primary-bg: var(--color-primary);
+  --v-cta-primary-bg-hover: var(--color-accent);
+  --v-cta-primary-color: var(--color-secondary);
+  --v-cta-primary-radius: 0;
+  --v-cta-primary-padding: 1.05rem 2.25rem;
+  --v-cta-primary-font-weight: 800;
+  --v-cta-primary-font-size: 0.875rem;
+  --v-cta-primary-text-transform: uppercase;
+  --v-cta-primary-letter-spacing: 0.1em;
+  --v-cta-primary-shadow: none;
+  --v-cta-primary-shadow-hover: none;
+  --v-cta-primary-clip: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 0.6rem),
+    calc(100% - 0.6rem) 100%,
+    0 100%
+  );
+  --v-cta-primary-transform-hover: translate(-2px, -2px);
+
+  --v-cta-secondary-bg: transparent;
+  --v-cta-secondary-bg-hover: var(--color-primary);
+  --v-cta-secondary-color: var(--color-primary);
+  --v-cta-secondary-radius: 0;
+  --v-cta-secondary-padding: 1.05rem 2.25rem;
+  --v-cta-secondary-font-weight: 800;
+  --v-cta-secondary-font-size: 0.875rem;
+  --v-cta-secondary-text-transform: uppercase;
+  --v-cta-secondary-letter-spacing: 0.1em;
+  --v-cta-secondary-border: 2px solid var(--color-primary);
+  --v-cta-secondary-border-hover: 2px solid var(--color-primary);
+
+  --v-eyebrow-font: inherit;
+  --v-eyebrow-style: normal;
+  --v-eyebrow-size: 0.75rem;
+  --v-eyebrow-color: var(--color-primary);
+  --v-eyebrow-weight: 800;
+  --v-eyebrow-letter-spacing: 0.24em;
+  --v-eyebrow-text-transform: uppercase;
+  --v-eyebrow-bg: var(--color-accent);
+  --v-eyebrow-padding: 0.35rem 0.75rem;
+
+  --v-divider-bg: var(--color-primary);
+  --v-divider-height: 4px;
+  --v-divider-width: 4rem;
+  --v-divider-margin: 1rem 0;
+
+  --v-hero-bg: var(--color-secondary);
+  --v-hero-shape-1-display: block;
+  --v-hero-shape-1-inset: -20% -10% auto auto;
+  --v-hero-shape-1-size: 60% 80%;
+  --v-hero-shape-1-bg: var(--color-primary);
+  --v-hero-shape-1-clip: polygon(20% 0, 100% 0, 100% 100%, 0 80%);
+  --v-hero-shape-1-opacity: 0.92;
+
+  --v-hero-shape-2-display: block;
+  --v-hero-shape-2-inset: auto auto -15% -8%;
+  --v-hero-shape-2-size: 35% 50%;
+  --v-hero-shape-2-bg: var(--color-accent);
+  --v-hero-shape-2-clip: polygon(0 20%, 100% 0, 80% 100%, 0 100%);
+  --v-hero-shape-2-opacity: 0.85;
+}
+
+/* ------------------------------------------------------------------ */
+/* Base classes — variant-agnostic, consume tokens via var()           */
+/* ------------------------------------------------------------------ */
+.v-root {
+  font-family: var(--v-font-body, ui-sans-serif, system-ui, sans-serif);
+  letter-spacing: var(--v-body-letter-spacing, 0);
+}
+
+.v-heading {
+  font-family: var(--v-font-heading, inherit);
+  font-weight: var(--v-heading-weight, 600);
+  letter-spacing: var(--v-heading-letter-spacing, -0.02em);
+  line-height: var(--v-heading-line-height, 1.1);
+  text-transform: var(--v-heading-transform, none);
+}
+
+.v-section {
+  padding-top: var(--v-section-py, 5rem);
+  padding-bottom: var(--v-section-py, 5rem);
+}
+
+.v-container {
+  width: 100%;
+  max-width: var(--v-container-max, 72rem);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .v-container {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+.v-card {
+  background: var(--v-card-bg, white);
+  border: var(--v-card-border, none);
+  border-radius: var(--v-card-radius, 1rem);
+  box-shadow: var(--v-card-shadow, none);
+  clip-path: var(--v-card-clip, none);
+  transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease, border-color 200ms ease;
+}
+
+.v-card:hover {
+  transform: var(--v-card-transform-hover, none);
+  box-shadow: var(--v-card-shadow-hover, var(--v-card-shadow, none));
+}
+
+.v-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: var(--v-cta-primary-bg, currentColor);
+  color: var(--v-cta-primary-color, white);
+  border-radius: var(--v-cta-primary-radius, 9999px);
+  padding: var(--v-cta-primary-padding, 0.95rem 2rem);
+  font-weight: var(--v-cta-primary-font-weight, 500);
+  font-size: var(--v-cta-primary-font-size, 0.95rem);
+  text-transform: var(--v-cta-primary-text-transform, none);
+  letter-spacing: var(--v-cta-primary-letter-spacing, 0);
+  box-shadow: var(--v-cta-primary-shadow, none);
+  clip-path: var(--v-cta-primary-clip, none);
+  border: 0;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.v-cta-primary:hover {
+  background: var(--v-cta-primary-bg-hover, var(--v-cta-primary-bg, currentColor));
+  box-shadow: var(--v-cta-primary-shadow-hover, var(--v-cta-primary-shadow, none));
+  transform: var(--v-cta-primary-transform-hover, none);
+}
+
+.v-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: var(--v-cta-secondary-bg, transparent);
+  color: var(--v-cta-secondary-color, currentColor);
+  border-radius: var(--v-cta-secondary-radius, 9999px);
+  padding: var(--v-cta-secondary-padding, 0.95rem 2rem);
+  font-weight: var(--v-cta-secondary-font-weight, 500);
+  font-size: var(--v-cta-secondary-font-size, 0.95rem);
+  text-transform: var(--v-cta-secondary-text-transform, none);
+  letter-spacing: var(--v-cta-secondary-letter-spacing, 0);
+  border: var(--v-cta-secondary-border, none);
+  transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.v-cta-secondary:hover {
+  background: var(--v-cta-secondary-bg-hover, var(--v-cta-secondary-bg, transparent));
+  border: var(--v-cta-secondary-border-hover, var(--v-cta-secondary-border, none));
+}
+
+/* When bold variant: secondary CTA hover swaps color to secondary */
+[data-variant='bold'] .v-cta-secondary:hover {
+  color: var(--color-secondary);
+}
+
+.v-eyebrow {
+  display: inline-block;
+  font-family: var(--v-eyebrow-font, inherit);
+  font-style: var(--v-eyebrow-style, normal);
+  font-size: var(--v-eyebrow-size, 0.75rem);
+  color: var(--v-eyebrow-color, currentColor);
+  font-weight: var(--v-eyebrow-weight, 600);
+  letter-spacing: var(--v-eyebrow-letter-spacing, 0.18em);
+  text-transform: var(--v-eyebrow-text-transform, uppercase);
+  background: var(--v-eyebrow-bg, transparent);
+  padding: var(--v-eyebrow-padding, 0);
+}
+
+.v-divider {
+  display: block;
+  background: var(--v-divider-bg, currentColor);
+  height: var(--v-divider-height, 1px);
+  width: var(--v-divider-width, 100%);
+  margin: var(--v-divider-margin, 0);
+  border: 0;
+}
+
+.v-hero {
+  background: var(--v-hero-bg, transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.v-hero::before {
+  content: '';
+  display: var(--v-hero-shape-1-display, none);
+  position: absolute;
+  inset: var(--v-hero-shape-1-inset, auto);
+  width: 60%;
+  height: 80%;
+  background: var(--v-hero-shape-1-bg, transparent);
+  clip-path: var(--v-hero-shape-1-clip, none);
+  opacity: var(--v-hero-shape-1-opacity, 0);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.v-hero::after {
+  content: '';
+  display: var(--v-hero-shape-2-display, none);
+  position: absolute;
+  inset: var(--v-hero-shape-2-inset, auto);
+  width: 35%;
+  height: 50%;
+  background: var(--v-hero-shape-2-bg, transparent);
+  clip-path: var(--v-hero-shape-2-clip, none);
+  opacity: var(--v-hero-shape-2-opacity, 0);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.v-hero > * {
+  position: relative;
+  z-index: 1;
+}

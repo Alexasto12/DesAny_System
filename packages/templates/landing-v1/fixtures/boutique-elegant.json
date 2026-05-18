@@ -1,0 +1,73 @@
+{
+  "hero": {
+    "headline": "Casa Lúcida — Una boutique para vestir despacio",
+    "subheadline": "Curaduría de prendas atemporales hechas por talleres pequeños en España, Portugal e Italia. Compras pocas piezas y las usas durante años, no temporadas."
+  },
+  "services": [
+    {
+      "name": "Curaduría de colección",
+      "description": "Tres entregas al año, no doce. Cada pieza se elige por tejido, corte y origen del taller, no por cumplir con el calendario de moda.",
+      "icon": "shirt"
+    },
+    {
+      "name": "Asesoría de estilo",
+      "description": "Sesiones privadas de noventa minutos. Trabajamos sobre tu fondo de armario real, no un escenario ideal. Salimos con una guía escrita de combinaciones.",
+      "icon": "crown"
+    },
+    {
+      "name": "Ajustes a medida",
+      "description": "Cada prenda incluye un ajuste sin coste en taller propio. Modificar, alargar, ceñir: lo que necesite la prenda para caer como debe.",
+      "icon": "scissors"
+    },
+    {
+      "name": "Reparación y restauración",
+      "description": "Recibimos también prendas que no compraste con nosotros. Un buen abrigo puede vivir veinte años si se le da el cuidado adecuado.",
+      "icon": "hand"
+    },
+    {
+      "name": "Joyería de autor",
+      "description": "Pequeña selección de piezas en plata y oro reciclado de talleres en Barcelona y Mallorca. Tiradas cortas, numeradas a mano.",
+      "icon": "gem"
+    },
+    {
+      "name": "Lista de espera",
+      "description": "Las piezas más solicitadas se reproducen en tiradas limitadas dos veces al año. Te avisamos antes de que se publiquen, sin algoritmos de por medio.",
+      "icon": "sparkles"
+    }
+  ],
+  "testimonials": [
+    {
+      "text": "Compré una gabardina hace tres años y la sigo usando cada otoño. Eso, en mi armario, era impensable antes de descubrir Casa Lúcida.",
+      "author": "Elena Vidal-Quadras",
+      "rating": 5
+    },
+    {
+      "text": "La asesoría me ahorró el siguiente impulso de comprar cosas que no necesitaba. Salí con una lista corta y, sobre todo, con criterio propio.",
+      "author": "Inés Aramburu",
+      "rating": 5
+    },
+    {
+      "text": "No es la boutique más barata del barrio, pero tampoco la que más reposiciones hago. Las matemáticas, a la larga, salen.",
+      "author": "Pilar Goyeneche",
+      "rating": 5
+    }
+  ],
+  "about": "Casa Lúcida abrió sus puertas en una librería antigua del Born en 2017. La fundó Marta Bassols después de quince años trabajando en compras para grandes grupos de lujo y cansarse del ritmo de las temporadas.\n\nTrabajamos directamente con dieciocho talleres familiares en la península ibérica e Italia. Conocemos a quien corta cada prenda, sabemos de dónde viene el tejido y podemos contarte cuánto tarda en hacerse cada pieza.\n\nNo rebajamos. Lo que sobra de una colección vuelve al taller para reincorporarse o se dona a un proyecto de reinserción laboral con el que colaboramos desde el primer año.",
+  "cta": {
+    "text": "Solicita una visita privada",
+    "action": "email",
+    "target": "atelier@casalucida.es"
+  },
+  "contact": {
+    "phone": "+34 932 18 47 06",
+    "email": "atelier@casalucida.es",
+    "address": "Carrer dels Banys Vells 12, 08003 Barcelona",
+    "mapsEmbedUrl": "https://maps.google.com/maps?q=Carrer+dels+Banys+Vells+12+Barcelona&t=&z=16&ie=UTF8&iwloc=&output=embed"
+  },
+  "colors": {
+    "primary": "#3a2e24",
+    "secondary": "#f1e9dc",
+    "accent": "#8d7556"
+  },
+  "styleVariant": "elegant"
+}
