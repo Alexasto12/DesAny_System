@@ -7,15 +7,17 @@
   "exports": { ".": "./dist/index.js" },
   "scripts": {
     "build": "tsc",
+    "generate": "drizzle-kit generate --config=drizzle.config.ts",
+    "push": "drizzle-kit push --config=drizzle.config.ts",
     "migrate": "drizzle-kit migrate --config=drizzle.config.ts",
     "studio": "drizzle-kit studio --config=drizzle.config.ts"
   },
   "dependencies": {
-    "drizzle-orm": "^0.32.0",
+    "drizzle-orm": "^0.36.0",
     "pg": "^8.11.0"
   },
   "devDependencies": {
-    "drizzle-kit": "^0.25.0",
+    "drizzle-kit": "^0.28.0",
     "typescript": "^5.6.0",
     "@types/node": "^22.0.0",
     "@types/pg": "^8.11.0"

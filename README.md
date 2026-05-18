@@ -17,11 +17,17 @@ cp .env.example .env
 # Install deps
 pnpm install
 
-# Start services (postgres, redis, etc.)
-docker compose -f docker/docker-compose.yml up -d
+# Build packages and apps (packages first so apps resolve workspace deps)
+pnpm build
+
+# Start datastores
+docker compose -f docker/docker-compose.yml up -d postgres redis
 
 # Run migrations
 pnpm db:migrate
+
+# Bring up the full stack
+docker compose -f docker/docker-compose.yml up -d
 
 # Start dev servers (if services are implemented)
 pnpm dev
