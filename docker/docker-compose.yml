@@ -37,25 +37,44 @@ services:
       - desany-network
     restart: unless-stopped
 
-  # Placeholder services for other apps (will be filled in by other prompts)
   llm-server:
     build:
       context: ../apps/llm-server
       dockerfile: Dockerfile
     container_name: desany-llm
-    ports:
-      - "8000:8000"
+    ports: ["8000:8000"]
     environment:
       MODEL_NAME: "Qwen/Qwen3-30B-A3B"
-    networks:
-      - desany-network
+      TENSOR_PARALLEL_SIZE: "1"
+      MAX_MODEL_LEN: "8192"
+      GPU_MEM_UTIL: "0.90"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    networks: [desany-network]
     restart: unless-stopped
-    # Uncomment when ready:
-    # deploy:
-    #   resources:
-    #     reservations:
-    #       devices:
-    #         - capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 300s
+
+  scraper:
+    build:
+      context: ..
+      dockerfile: apps/scraper/Dockerfile
+    container_name: desany-scraper
+    env_file: ../.env
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+    networks: [desany-network]
+    restart: unless-stopped
 
   email-service:
     build:
