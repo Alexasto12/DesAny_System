@@ -5,7 +5,9 @@
   "type": "module",
   "engines": { "node": ">=22.0.0", "pnpm": ">=9.0.0" },
   "scripts": {
-    "build": "pnpm -r build",
+    "build:packages": "pnpm --filter @desany/types build && pnpm --filter @desany/db build && pnpm --filter @desany/prompts build",
+    "build:apps": "pnpm --filter './apps/*' build",
+    "build": "pnpm build:packages && pnpm build:apps",
     "dev": "pnpm -r --parallel dev",
     "db:migrate": "cd packages/db && pnpm migrate",
     "db:studio": "cd packages/db && pnpm studio"
@@ -17,7 +19,8 @@
   },
   "pnpm": {
     "overrides": {
-      "typescript": "^5.6.0"
+      "typescript": "^5.6.0",
+      "drizzle-orm": "^0.36.0"
     }
   }
 }
