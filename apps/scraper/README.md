@@ -16,6 +16,7 @@ ScrapeJobPayload { category, city, limit }
   for each business:
     - fetch homepage/contact pages, parse emails
     - upsert into `leads` (by businessName + city)
+    - enqueue a `generate-content` job for the upserted lead
         │
         ▼
   update pipeline_jobs.status

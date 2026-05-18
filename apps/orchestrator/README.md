@@ -178,6 +178,8 @@ Every `SCHEDULER_INTERVAL_MS` (default 5 minutes) the orchestrator runs:
 1. **Resurrect stuck jobs.** `pipeline_jobs WHERE status='running'
    AND updated_at < now - STUCK_JOB_TIMEOUT_MS` (default 30 min) → mark
    failed and re-enqueue.
+1b. **Kick scraped leads.** `leads WHERE status='scraped'` with no
+   `generate-content` pipeline row → insert one + enqueue.
 2. **Kick enriched leads.** `leads WHERE status='enriched'` with no
    `generate-content` pipeline row → insert one + enqueue.
 3. **Kick content-ready sites.** `generated_sites WHERE status='content-ready'`

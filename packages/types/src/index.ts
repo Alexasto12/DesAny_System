@@ -1,7 +1,7 @@
 export type LeadStatus = 'raw' | 'scraped' | 'enriched' | 'failed';
 export type SiteStatus = 'content-ready' | 'deployed' | 'deploy-failed' | 'archived';
 export type OutreachStatus = 'pending' | 'sent' | 'opened' | 'replied' | 'no-email';
-export type JobStage = 'scrape' | 'enrich' | 'generate-content' | 'build-site' | 'send-outreach';
+export type JobStage = 'scrape' | 'generate-content' | 'build-site' | 'send-outreach';
 export type JobStatus = 'pending' | 'running' | 'completed' | 'failed';
 
 export interface Lead {
@@ -103,10 +103,6 @@ export interface ScrapeJobPayload {
   category: string;
   city: string;
   limit: number;
-}
-
-export interface EnrichJobPayload {
-  leadId: number;
 }
 
 export interface GenerateContentJobPayload {

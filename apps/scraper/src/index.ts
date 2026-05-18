@@ -1,6 +1,6 @@
 import { writeFileSync, unlinkSync } from 'node:fs';
 import IORedis from 'ioredis';
-import { Worker, type Job } from 'bullmq';
+import { Queue, Worker, type Job } from 'bullmq';
 import type { ScrapeJobPayload } from '@desany/types';
 import { config } from './config.js';
 import { logger } from './logger.js';
@@ -47,6 +47,8 @@ connection.on('reconnecting', () => {
 connection.on('ready', () => {
   logger.info('redis ready');
 });
+
+const generateContentQueue = new Queue('generate-content', { connection });
 
 async function processScrapeJob(job: Job<ScrapeJobPayload>): Promise<{
   scraped: number;
@@ -102,6 +104,17 @@ async function processScrapeJob(job: Job<ScrapeJobPayload>): Promise<{
         jobLogger.debug(
           { leadId: result.id, created: result.created, businessName: biz.name },
           'lead upserted',
+        );
+
+        await generateContentQueue.add(
+          'generate-content',
+          { leadId: result.id },
+          {
+            removeOnComplete: { count: 100 },
+            removeOnFail: { count: 100 },
+            attempts: 3,
+            backoff: { type: 'exponential', delay: 5000 },
+          },
         );
       } catch (err) {
         failed++;
@@ -161,6 +174,7 @@ async function shutdown(signal: string): Promise<void> {
   removeHealthcheck();
   try {
     await worker.close();
+    await generateContentQueue.close();
     await connection.quit();
   } catch (err) {
     logger.error({ err }, 'error during shutdown');

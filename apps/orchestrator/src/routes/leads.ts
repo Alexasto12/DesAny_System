@@ -187,7 +187,7 @@ export async function registerLeadRoutes(
           });
         }
         payload = { siteId: site.id };
-      } else if (stage === 'enrich' || stage === 'generate-content') {
+      } else if (stage === 'generate-content') {
         payload = { leadId: id };
       } else {
         // scrape retry doesn't make sense at the lead level — scrape produces leads.
